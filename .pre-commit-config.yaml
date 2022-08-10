@@ -10,18 +10,12 @@ repos:
       -   id: check-json
       -   id: detect-private-key
 # Golang Hooks
-  - repo: https://github.com/golangci/golangci-lint
-    rev: v1.41.1
-    hooks:
-      - id: golangci-lint
-
   - repo: https://github.com/Bahjat/pre-commit-golang
     rev: v1.0.1
     hooks:
       - id: go-fmt-import
       - id: go-vet
-      - id: go-unit-tests
-      - id: go-err-check # requires github.com/kisielk/errcheck
+      #- id: go-unit-tests
 
 # JavaScript Hooks
 
