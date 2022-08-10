@@ -1,0 +1,33 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v0.7.1
+    hooks:
+      -   id: check-merge-conflict
+      -   id: check-yaml
+      -   id: end-of-file-fixer
+      -   id: trailing-whitespace
+      -   id: check-added-large-files
+      -   id: check-json
+      -   id: detect-private-key
+# Golang Hooks
+  - repo: https://github.com/golangci/golangci-lint
+    rev: v1.41.1
+    hooks:
+      - id: golangci-lint
+
+  - repo: https://github.com/Bahjat/pre-commit-golang
+    rev: v1.0.1
+    hooks:
+      - id: go-fmt-import
+      - id: go-vet
+      - id: go-unit-tests
+      - id: go-err-check # requires github.com/kisielk/errcheck
+
+# JavaScript Hooks
+
+# Docker hooks
+  - repo: https://github.com/AleksaC/hadolint-py
+    rev: v1.19.0
+    hooks:
+      - id: hadolint
+        args: [--ignore, DL3025, --ignore, DL3018]
