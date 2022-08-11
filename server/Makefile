@@ -1,5 +1,5 @@
 docbuild:
-	swag init --parseDependency --parseInternal -d ./,./pkg/common/models,./pkg/products,./pkg/users
+	swag init --parseDependency --parseInternal -d ./cmd,./pkg/common/models,./pkg/products,./pkg/users
 	docker compose -f ./docker-compose.yml build
 
 build:
