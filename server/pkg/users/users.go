@@ -75,6 +75,9 @@ func (h DbHandler) GetUserById(c *fiber.Ctx) error {
 		}
 	}
 
+	// clear password
+	user.Password = ""
+
 	return c.Status(fiber.StatusOK).JSON(models.ResponseHTTP{
 		Success: true,
 		Message: "Successfully retrieved product",
@@ -99,6 +102,15 @@ func (h DbHandler) AddUser(c *fiber.Ctx) error {
 		return c.Status(fiber.StatusBadRequest).JSON(models.ResponseHTTP{
 			Success: false,
 			Message: err.Error(),
+			Data:    nil,
+		})
+	}
+
+	// empty Password is not valid
+	if body.Password == "" {
+		return c.Status(fiber.StatusBadRequest).JSON(models.ResponseHTTP{
+			Success: false,
+			Message: "Password cannot be empty",
 			Data:    nil,
 		})
 	}
@@ -191,6 +203,7 @@ func (h DbHandler) UpdateUser(c *fiber.Ctx) error {
 		})
 	}
 
+	user.Password = ""
 	return c.Status(fiber.StatusOK).JSON(models.ResponseHTTP{
 		Success: true,
 		Message: "Successfully updated user's names",
