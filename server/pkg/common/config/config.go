@@ -19,6 +19,12 @@ type Config struct {
 }
 
 func GetValue(key string) string {
+	envValue := os.Getenv(key)
+
+	if envValue != "" {
+		return envValue
+	}
+
 	// load .env file
 	err := godotenv.Load(".env")
 	if err != nil {
