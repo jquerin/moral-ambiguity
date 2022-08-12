@@ -29,5 +29,5 @@ func main() {
 
 	// setup logger middleware
 	app.Use(logger.New())
-	log.Fatal(app.Listen(conf.Port))
+	log.Fatal(app.Listen(config.GetValue("PORT")))
 }

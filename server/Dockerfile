@@ -1,5 +1,10 @@
 FROM golang:1.18
 
+# metadata for better organization
+LABEL app="go-moral-ambiguity"
+LABEL environment="development"
+LABEL maintainer="Josh <defidunce@proton.me>"
+
 WORKDIR /go/src/moral-ambiguity
 
 COPY . .
